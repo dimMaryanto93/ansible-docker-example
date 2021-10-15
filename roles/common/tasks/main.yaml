@@ -1,10 +1,18 @@
 ---
 ## Configure selinux
-- import_tasks: config-selinux.yaml
+- name: Configure Selinux for CentOS
+  include_tasks: config-selinux.yaml
   when: ansible_facts['distribution'] == 'CentOS'
-  
+
 ## Install dependencies for docker
-- import_tasks: docker-centos-deps.yaml
+- name: Install dependencies for CentOS
+  include_tasks: docker-centos-deps.yaml
   when: ansible_facts['distribution'] == 'CentOS'
-- import_tasks: docker-ubuntu-deps.yaml
+
+- name: Intall dependencies for Ubuntu
+  include_tasks: docker-ubuntu-deps.yaml
   when: ansible_facts['distribution'] == 'Ubuntu'
+
+## Install Python client for docker
+- name: Intall docker-py
+  include_tasks: pip-docker.yaml

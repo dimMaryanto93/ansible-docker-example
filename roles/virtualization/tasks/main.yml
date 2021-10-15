@@ -1,0 +1,17 @@
+---
+## Install docker
+- name: Install Docker for CentOS
+  when: ansible_facts['distribution'] == 'CentOS'
+  include_tasks: docker-centos.yaml
+
+- name: Install Docker for Ubuntu  
+  when: ansible_facts['distribution'] == 'Ubuntu'
+  include_tasks: docker-ubuntu.yaml
+
+## Configure normal user
+- name: Configure normal user
+  include_tasks: docker-normal-user.yaml
+
+## Configure insecure registries
+- include_tasks: docker-insecure-registry.yaml
+  

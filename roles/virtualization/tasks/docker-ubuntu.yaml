@@ -14,7 +14,6 @@
 - name: Install dockerd for Ubuntu
   become: true
   apt:
-    update_cache: yes
     name: "{{ item }}"
     state: latest
   loop: [ "docker-ce", "docker-ce-cli", "containerd.io" ]
@@ -24,4 +23,5 @@
   service:
     name: docker
     state: started
+    daemon_reload: yes
     enabled: yes

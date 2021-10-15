@@ -1,3 +1,4 @@
+---
 - name: Create Directory /etc/docker
   become: true
   file:
@@ -16,6 +17,7 @@
     - Restart docker
 
 - name: Login to private registry
+  become: true
   docker_login:
     registry: "{{ item }}"
     username: "{{ docker_insecure_user }}"

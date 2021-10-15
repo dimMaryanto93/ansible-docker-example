@@ -1,5 +1,7 @@
 ---
-- hosts: all
+- name: Install Docker-CE
+  hosts: all
+  gather_facts: no
   roles: 
     - common
     - virtualization
