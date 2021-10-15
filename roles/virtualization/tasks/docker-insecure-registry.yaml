@@ -1,0 +1,24 @@
+- name: Create Directory /etc/docker
+  become: true
+  file:
+    path: /etc/docker
+    state: directory
+    mode: 0755
+
+- name: Set docker daemon
+  become: true
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+    backup: true
+    mode: 0644
+  notify:
+    - Restart docker
+
+- name: Login to private registry
+  docker_login:
+    registry: "{{ item }}"
+    username: "{{ docker_insecure_user }}"
+    password: "{{ docker_insecure_password }}"
+    reauthorize: yes
+  loop: "{{ docker_insecure_registries }}"

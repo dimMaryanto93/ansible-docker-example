@@ -1,0 +1,10 @@
+---
+## Configure selinux
+- import_tasks: config-selinux.yaml
+  when: ansible_facts['distribution'] == 'CentOS'
+  
+## Install dependencies for docker
+- import_tasks: docker-centos-deps.yaml
+  when: ansible_facts['distribution'] == 'CentOS'
+- import_tasks: docker-ubuntu-deps.yaml
+  when: ansible_facts['distribution'] == 'Ubuntu'

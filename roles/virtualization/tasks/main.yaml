@@ -1,0 +1,9 @@
+---
+## Install docker
+- import_tasks: docker-centos.yaml
+  when: ansible_facts['distribution'] == 'CentOS'
+- import_tasks: docker-ubuntu.yaml
+  when: ansible_facts['distribution'] == 'Ubuntu'
+
+## Configure insecure registries
+- import_tasks: docker-insecure-registry.yaml
