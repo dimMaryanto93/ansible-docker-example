@@ -1,6 +1,5 @@
 ---
 - name: Login to registry
-  become: true
   docker_login:
     registry: "{{ item }}"
     username: "{{ docker_insecure_user }}"

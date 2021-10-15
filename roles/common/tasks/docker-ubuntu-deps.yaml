@@ -1,6 +1,5 @@
 ---
 - name: Install Dependencies for Ubuntu
-  become: true
   apt:
     name: "{{ item }}"
     state: latest
