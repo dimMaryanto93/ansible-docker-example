@@ -13,5 +13,6 @@
   include_tasks: docker-normal-user.yaml
 
 ## Configure insecure registries
-- include_tasks: docker-insecure-registry.yaml
+- name: Configure insecure-registries
+  include_tasks: docker-insecure-registry.yaml
   

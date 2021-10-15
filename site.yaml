@@ -1,7 +1,11 @@
 ---
-- name: Install Docker-CE
+- name: Install docker-ce
   hosts: all
-  gather_facts: no
   roles: 
     - common
-    - virtualization
+    - docker
+
+- name: Configure docker options
+  hosts: all
+  roles:
+    - options

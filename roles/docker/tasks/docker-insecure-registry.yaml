@@ -15,12 +15,3 @@
     mode: 0644
   notify:
     - Restart docker
-
-- name: Login to private registry
-  become: true
-  docker_login:
-    registry: "{{ item }}"
-    username: "{{ docker_insecure_user }}"
-    password: "{{ docker_insecure_password }}"
-    reauthorize: yes
-  loop: "{{ docker_insecure_registries }}"

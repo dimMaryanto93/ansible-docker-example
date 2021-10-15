@@ -1,0 +1,5 @@
+---
+## Configure insecure registries
+- name: Log into docker registries
+  include_tasks: docker-login.yaml
+  
