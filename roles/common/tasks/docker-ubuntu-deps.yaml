@@ -1,4 +1,10 @@
 ---
+- name: Update ubuntu package
+  apt: 
+    update_cache: yes 
+    force_apt_get: yes
+    cache_valid_time: 3600
+
 - name: Install Dependencies for Ubuntu
   apt:
     name: "{{ item }}"
