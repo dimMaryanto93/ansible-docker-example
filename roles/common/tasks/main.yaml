@@ -13,6 +13,19 @@
   include_tasks: docker-ubuntu-deps.yaml
   when: ansible_facts['distribution'] == 'Ubuntu'
 
+## Install python module
+- name: Install Python and pip3 for Centos 7
+  include_tasks: docker-centos7-python-module.yaml
+  when: 
+    - ansible_facts['distribution'] == 'CentOS'
+    - ansible_facts['distribution_major_version'] | int == 7
+
+- name: Install Python and pip3 for Centos 8
+  include_tasks: docker-centos8-python-module.yaml
+  when: 
+    - ansible_facts['distribution'] == 'CentOS'
+    - ansible_facts['distribution_major_version'] | int >= 8
+
 ## Install Python client for docker
 - name: Intall docker-py
   include_tasks: pip-docker.yaml

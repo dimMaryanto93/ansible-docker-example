@@ -1,0 +1,6 @@
+---
+- name: Install Python module Docker for Centos 8
+  yum:
+    name: "{{ item }}"
+    state: latest
+  loop: ["python3", "python3-pip","python3-docker", "python3-setuptools"]
