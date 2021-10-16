@@ -3,3 +3,4 @@
   pip:
     name: docker
     state: latest
+    executable: pip3
